@@ -37,7 +37,7 @@ class VOCAction(VisionDataset):
     CLASSES = ('jumping', 'phoning', 'playinginstrument', 'reading', 'ridingbike',
                'ridinghorse', 'running', 'takingphoto', 'usingcomputer', 'walking', 'other')
 
-    def __init__(self, root=os.path.join('/content/MXNet_last', 'data', 'VOCdevkit'),
+    def __init__(self, root=os.path.join('/content/MXNet_last2', 'data', 'VOCdevkit'),
                  split='train', index_map=None, preload_label=True,
                  augment_box=False, load_box=False, random_cls=False):
         super(VOCAction, self).__init__(root)
