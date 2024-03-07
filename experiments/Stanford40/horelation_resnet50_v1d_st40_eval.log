@@ -1,0 +1,46 @@
+Namespace(batch_size=1, dataset='st40', eval_all=False, gpus='0', network='resnet50_v1d', num_workers=0, pretrained='pretrained.params', save_outputs=False, save_prefix='horelation_resnet50_v1d_st40')
+[Model: pretrained.params] Start Evaluation
+[Model: pretrained.params] Evaluation Result: 
+applauding=0.8818497657775879
+blowing_bubbles=0.9664684534072876
+brushing_teeth=0.8774892091751099
+cleaning_the_floor=0.9663792848587036
+climbing=0.9838704466819763
+cooking=0.898577094078064
+cutting_trees=0.9421936273574829
+cutting_vegetables=0.8850972056388855
+drinking=0.8552985787391663
+feeding_a_horse=0.995274007320404
+fishing=0.9666913151741028
+fixing_a_bike=0.9738485813140869
+fixing_a_car=0.9721583127975464
+gardening=0.8816987872123718
+holding_an_umbrella=0.9987978339195251
+jumping=0.9412736296653748
+looking_through_a_microscope=0.9595014452934265
+looking_through_a_telescope=0.8615304827690125
+playing_guitar=0.9934052228927612
+playing_violin=0.9993863701820374
+pouring_liquid=0.7362573742866516
+pushing_a_cart=0.9443670511245728
+reading=0.8998385667800903
+phoning=0.8901233077049255
+riding_a_bike=0.9864451885223389
+riding_a_horse=0.9993825554847717
+rowing_a_boat=0.986913800239563
+running=0.9286839962005615
+shooting_an_arrow=0.9541755318641663
+smoking=0.8832627534866333
+taking_photos=0.8225091099739075
+texting_message=0.8526926636695862
+throwing_frisby=0.9596619009971619
+using_a_computer=0.9478639364242554
+walking_the_dog=0.9948375821113586
+washing_dishes=0.850440263748169
+watching_TV=0.952450692653656
+waving_hands=0.7518423199653625
+writing_on_a_board=0.9389397501945496
+writing_on_a_book=0.9320130348205566
+mAP=0.9253371953964233
+Namespace(batch_size=1, dataset='st40', eval_all=False, gpus='0', network='resnet50_v1d', num_workers=0, pretrained='pretrained.params', save_outputs=False, save_prefix='horelation_resnet50_v1d_st40')
+[Model: pretrained.params] Start Evaluation

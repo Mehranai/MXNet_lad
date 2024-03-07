@@ -1,0 +1,17 @@
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+Namespace(batch_size=1, cycle_len=30000, dataset='voca', epochs=15, gpus='0', log_interval=100, lr_warmup=-1, max_lr=4e-05, min_lr=1e-06, momentum=0.9, network='resnet50_v1d', num_workers=0, resume='', save_interval=1, save_prefix='horelation_resnet50_v1d_voca', seed=233, start_epoch=0, val_interval=1, verbose=False, wd=0.0005)
+Start training from [Epoch 0]
+[Epoch 0 Iteration 0] Set learning rate to 4e-05
