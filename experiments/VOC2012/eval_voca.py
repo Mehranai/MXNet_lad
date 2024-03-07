@@ -53,7 +53,7 @@ def get_dataset(dataset, args):
 
 def get_dataloader(net, val_dataset, batch_size, num_workers):
     """Get dataloader."""
-    val_bfn = batchify.Tuple(*[batchify.Append() for _ in range(3)])
+    val_bfn = batchify.Tuple(*[batchify.Append() for _ in range(4)])
     val_loader = mx.gluon.data.DataLoader(
         val_dataset.transform(HORelationDefaultValTransform(net.short, net.max_size)),
         batch_size, False, batchify_fn=val_bfn, last_batch='keep', num_workers=num_workers)
@@ -78,10 +78,10 @@ def validate(net, val_data, ctx, eval_metric, size):
             batch = split_and_load(batch, ctx_list=ctx)
             cls_scores = []
             gt_classes = []
-            for data, label, box in zip(*batch):
+            for data, label, box, pose in zip(*batch):
                 gt_box = label[:, :, :4]
                 # get prediction results
-                cls_score = net(data, gt_box, box)
+                cls_score = net(data, gt_box, box, pose)
                 # shape (B, N, C)
                 cls_score = mx.nd.softmax(cls_score, axis=-1)
                 cls_scores.append(cls_score[:, :, :])
