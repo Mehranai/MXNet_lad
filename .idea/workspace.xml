@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82f96948-eb4d-46ff-8218-74c6c19cdf13" name="Changes" comment="lasttt">
-      <change beforePath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +212,10 @@
       <workItem from="1709804284570" duration="1482000" />
       <workItem from="1709817679022" duration="3204000" />
       <workItem from="1710246446238" duration="7432000" />
-      <workItem from="1710255027881" duration="239000" />
+      <workItem from="1710255027881" duration="285000" />
+      <workItem from="1710256238997" duration="16000" />
+      <workItem from="1710256296705" duration="7000" />
+      <workItem from="1710262233118" duration="101000" />
     </task>
     <task id="LOCAL-00001" summary="sdf">
       <option name="closed" value="true" />
@@ -357,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710255168617</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="lasttt">
+      <option name="closed" value="true" />
+      <created>1710255303947</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710255303947</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

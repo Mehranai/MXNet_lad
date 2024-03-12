@@ -92,7 +92,6 @@ class HORelationDefaultValTransform(object):
         # no scaling ground-truth, return image scaling ratio instead
         bbox = tbbox.resize(label, (w, h), (img.shape[1], img.shape[0]))
         objbox = tbbox.resize(objbox, (w, h), (img.shape[1], img.shape[0]))
-        pose = tbbox.resize(pose, (w, h), (img.shape[1], img.shape[0]))
 
         img = mx.nd.image.to_tensor(img)
         img = mx.nd.image.normalize(img, mean=self._mean, std=self._std)
@@ -131,7 +130,6 @@ class HORelationDefaultVisTransform(object):
         # no scaling ground-truth, return image scaling ratio instead
         bbox = tbbox.resize(label, (w, h), (img.shape[1], img.shape[0]))
         objbox = tbbox.resize(objbox, (w, h), (img.shape[1], img.shape[0]))
-        pose = tbbox.resize(pose, (w, h), (img.shape[1], img.shape[0]))
 
         img = mx.nd.image.to_tensor(img)
         img = mx.nd.image.normalize(img, mean=self._mean, std=self._std)
