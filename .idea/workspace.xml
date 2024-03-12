@@ -5,38 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="82f96948-eb4d-46ff-8218-74c6c19cdf13" name="Changes" comment="lasttt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/HICO/eval_hico.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/HICO/eval_hico.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/HICO/train_hico.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/HICO/train_hico.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/Stanford40/eval_st40.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/Stanford40/eval_st40.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/Stanford40/train_st40.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/Stanford40/train_st40.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/VOC2012/eval_voca.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/VOC2012/eval_voca.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/VOC2012/train_voca.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/VOC2012/train_voca.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/batchify.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/batchify.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/hico/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/hico/classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/mscoco/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/mscoco/detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/pascal_voc/action.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/pascal_voc/action.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/pascal_voc/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/pascal_voc/detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/stanford40/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/stanford40/detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/bbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/bbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/block.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/rcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/model/ho_relation/ho_relation_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/ho_relation/ho_relation_net.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/model/rpn/bbox_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/rpn/bbox_clip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/model/rpn/rpn_target.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/rpn/rpn_target.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/nn/feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/nn/feature.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/utils/metrics/accuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/utils/metrics/accuracy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libgcv/utils/metrics/coco_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/utils/metrics/coco_detection.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/classification/finetune_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/classification/finetune_net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/detection/eval_faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/detection/eval_faster_rcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/detection/train_faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/detection/train_faster_rcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/object_box_detect/detect_action_boxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/object_box_detect/detect_action_boxes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/object_box_detect/detect_and_vis_action_boxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/object_box_detect/detect_and_vis_action_boxes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +211,7 @@
       <workItem from="1709804284570" duration="1482000" />
       <workItem from="1709817679022" duration="3204000" />
       <workItem from="1710246446238" duration="7432000" />
+      <workItem from="1710255027881" duration="239000" />
     </task>
     <task id="LOCAL-00001" summary="sdf">
       <option name="closed" value="true" />
@@ -379,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709817790492</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="lasttt">
+      <option name="closed" value="true" />
+      <created>1710255168617</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1710255168617</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
