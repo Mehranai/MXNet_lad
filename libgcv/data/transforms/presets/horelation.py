@@ -32,7 +32,7 @@ class HORelationDefaultTrainTransform(object):
             brightness=brightness, contrast=contrast, saturation=saturation, hue=hue)
 
     def __call__(self, src, label, box, pose):
-        """Apply transform to validation image/label."""
+        """Apply transform to validation image/ladbel."""
         img = src
         bbox = label
         objbox = box

@@ -49,7 +49,7 @@ class Stanford40Action(VisionDataset):
                "using_a_computer", "walking_the_dog", "washing_dishes", "watching_TV", "waving_hands",
                "writing_on_a_board", "writing_on_a_book")
 
-    def __init__(self, root=os.path.join('/content/Data', 'Stanford40'),
+    def __init__(self, root=os.path.join('/content/MXNet_lad/Data', 'Stanford40'),
                  split='train', index_map=None, preload_label=True,
                  augment_box=False, load_box=False):
         super(Stanford40Action, self).__init__(root)
