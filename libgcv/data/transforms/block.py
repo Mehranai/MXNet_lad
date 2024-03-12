@@ -46,7 +46,7 @@ class RandomCrop(Block):
 
 
     Inputs:
-        - **data**: input tensor with (Hi x Wi x C) shape.
+        - **Data**: input tensor with (Hi x Wi x C) shape.
     Outputs:
         - **out**: output tensor with ((H+2*pad) x (W+2*pad) x C) shape.
     """

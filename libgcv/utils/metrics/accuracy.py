@@ -48,7 +48,7 @@ class Accuracy(mx.metric.EvalMetric):
         Parameters
         ----------
         labels : list of `NDArray`
-            The labels of the data with class indices as values, one per sample.
+            The labels of the Data with class indices as values, one per sample.
         preds : list of `NDArray`
             Prediction values for samples. Each prediction value can either be the class index,
             or a vector of likelihoods for all classes.

@@ -22,7 +22,7 @@ class COCODetection(VisionDataset):
         Json annotations name.
         Candidates can be: instances_val2017, instances_train2017.
     transform : callable, defaut None
-        A function that takes data and label and transforms them. Refer to
+        A function that takes Data and label and transforms them. Refer to
         :doc:`./transforms` for examples.
 
         A transform function for object detection should take label into consideration,

@@ -1,6 +1,7 @@
 """Human-object Relation Network."""
 from __future__ import absolute_import
 
+import numpy as np
 import os
 import mxnet as mx
 from mxnet.gluon import nn
@@ -158,37 +159,14 @@ class HORelationNet(HORelationBase):
                 self.num_class, weight_initializer=mx.init.Normal(0.01))
 
 
-    # pylint: disable=arguments-differ
-    def hybrid_forward(self, F, x, gt_box=None, obj_box=None, pose_box=None):
-        """Forward Faster-RCNN network.
+    def hybrid_forward(self, F, x, gt_box=None, obj_box=None, pose=None):
 
-        The behavior during traing and inference is different.
-
-        Parameters
-        ----------
-        x : mxnet.nd.NDArray or mxnet.symbol
-            The network input tensor.
-        gt_box : mxnet.nd.NDArray or mxnet.symbol
-            The ground-truth bbox tensor with shape (1, N, 4).
-        obj_box : mxnet.nd.NDArray or mxnet.symbol
-            The object bbox tensor with shape (1, N, 4).
-
-        Returns
-        -------
-        (ids, scores, bboxes)
-            During inference, returns final class id, confidence scores, bounding
-            boxes.
-
-        """
         feat = self.features(x)
         rsn_box = obj_box.reshape((-1, 4))
-        rsn_box_pose = pose_box.reshape((-1, 4))
 
         # create batchid
         rsn_batchid = F.zeros_like(rsn_box.slice_axis(axis=-1, begin=0, end=1))
         rsn_rois = F.concat(*[rsn_batchid, rsn_box], dim=-1)
-        rsn_pose_batchid = F.zeros_like(rsn_box_pose.slice_axis(axis=-1, begin=0, end=1))
-        rsn_pose_rois = F.concat(*[rsn_pose_batchid, rsn_box_pose], dim=-1)
         gt_batchid = F.zeros_like(gt_box.slice_axis(axis=-1, begin=0, end=1))
         gt_rois = F.concat(*[gt_batchid.reshape((-1, 1)), gt_box.reshape((-1, 4))], dim=-1)
 
@@ -196,13 +174,10 @@ class HORelationNet(HORelationBase):
         if self._roi_mode == 'pool':
             pooled_feat = F.ROIPooling(feat, gt_rois, self._roi_size, 1. / self._stride)
             pooled_ctx_feat = F.ROIPooling(feat, rsn_rois, self._roi_size, 1. / self._stride)
-            pooled_pose_feat = F.ROIPooling(feat, rsn_pose_rois, self._roi_size, 1. / self._stride)
         elif self._roi_mode == 'align':
             pooled_feat = F.contrib.ROIAlign(feat, gt_rois, self._roi_size, 1. / self._stride,
                                              sample_ratio=2)
             pooled_ctx_feat = F.contrib.ROIAlign(feat, rsn_rois, self._roi_size, 1. / self._stride,
-                                                 sample_ratio=2)
-            pooled_pose_feat = F.contrib.ROIAlign(feat, rsn_pose_rois, self._roi_size, 1. / self._stride,
                                                  sample_ratio=2)
         else:
             raise ValueError("Invalid roi mode: {}".format(self._roi_mode))
@@ -211,57 +186,145 @@ class HORelationNet(HORelationBase):
         top_feat = self.top_features(pooled_feat)
         # contextual region prediction
         top_ctx_feat = self.top_features(pooled_ctx_feat)
-        top_pose_feat = self.top_features(pooled_pose_feat)
 
         if self.use_global_avg_pool:
             top_feat = self.global_avg_pool(top_feat)
             top_ctx_feat = self.global_avg_pool(top_ctx_feat)
-            top_pose_feat = self.global_avg_pool(top_pose_feat)
 
         top_feat = self.fc(top_feat)
         top_ctx_feat = self.fc_ctx(top_ctx_feat)
-        top_pose_feat = self.fc_pose(top_pose_feat)
+        top_feat_pose = self.fc_pose(pose)
 
         if self._additional_output:
-            relation_feat_ho, relation_feat_oh, relation = \
+            relation_feat, relation_ctx_feat, relation = \
                 self.relation(top_feat, top_ctx_feat, gt_box.reshape((-1, 4)), rsn_box)
-
-            relation_feat_hp, relation_feat_ph, relation_p = \
-                self.relation(top_feat, top_pose_feat, gt_box.reshape((-1, 4)), rsn_box_pose)
         else:
-            relation_feat_ho, relation_feat_oh = \
+            relation_feat, relation_ctx_feat = \
                 self.relation(top_feat, top_ctx_feat, gt_box.reshape((-1, 4)), rsn_box)
-
-            relation_feat_hp, relation_feat_ph = \
-                self.relation(top_feat, top_pose_feat, gt_box.reshape((-1, 4)), rsn_box_pose)
-
-        relation_feat_hop = 0.5 * relation_feat_ho + 0.5 * relation_feat_hp
-        top_feat = top_feat + relation_feat_hop
-        top_ctx_feat = top_ctx_feat + relation_feat_oh
-        top_pose_feat = top_pose_feat + relation_feat_ph
+        top_feat = top_feat + relation_feat
+        top_ctx_feat = top_ctx_feat + relation_ctx_feat
 
         cls_pred = self.class_predictor(top_feat)
         ctx_cls_pred = self.ctx_class_predictor(top_ctx_feat)
-        pose_cls_pred = self.pose_class_predictor(top_pose_feat)
+        pose_cls_pred = self.pose_class_predictor(top_feat_pose)
 
         # cls_pred (B * N, C) -> (B, N, C)
         cls_pred = cls_pred.reshape((self._max_batch, -1, self.num_class))
-        ctx_cls_pred = ctx_cls_pred.reshape((self._max_batch, -1, self.num_class))
         pose_cls_pred = pose_cls_pred.reshape((self._max_batch, -1, self.num_class))
+        ctx_cls_pred = ctx_cls_pred.reshape((self._max_batch, -1, self.num_class))
 
         ctx_cls_pred = ctx_cls_pred.max(axis=1, keepdims=True)
         cls_pred = F.broadcast_add(cls_pred, ctx_cls_pred)
 
-        pose_cls_pred = pose_cls_pred.max(axis=1, keepdims=True)
         cls_pred = F.broadcast_add(cls_pred, pose_cls_pred)
-
         if self._additional_output:
             return cls_pred, relation
         return cls_pred
 
+    # pylint: disable=arguments-differ
+    # def hybrid_forward(self, F, x, gt_box=None, obj_box=None, pose_box=None):
+    #     """Forward Faster-RCNN network.
+    #
+    #     The behavior during traing and inference is different.
+    #
+    #     Parameters
+    #     ----------
+    #     x : mxnet.nd.NDArray or mxnet.symbol
+    #         The network input tensor.
+    #     gt_box : mxnet.nd.NDArray or mxnet.symbol
+    #         The ground-truth bbox tensor with shape (1, N, 4).
+    #     obj_box : mxnet.nd.NDArray or mxnet.symbol
+    #         The object bbox tensor with shape (1, N, 4).
+    #
+    #     Returns
+    #     -------
+    #     (ids, scores, bboxes)
+    #         During inference, returns final class id, confidence scores, bounding
+    #         boxes.
+    #
+    #     """
+    #     feat = self.features(x)
+    #     rsn_box = obj_box.reshape((-1, 4))
+    #     rsn_box_pose = pose_box.reshape((-1, 4))
+    #
+    #     # create batchid
+    #     rsn_batchid = F.zeros_like(rsn_box.slice_axis(axis=-1, begin=0, end=1))
+    #     rsn_rois = F.concat(*[rsn_batchid, rsn_box], dim=-1)
+    #     rsn_pose_batchid = F.zeros_like(rsn_box_pose.slice_axis(axis=-1, begin=0, end=1))
+    #     rsn_pose_rois = F.concat(*[rsn_pose_batchid, rsn_box_pose], dim=-1)
+    #     gt_batchid = F.zeros_like(gt_box.slice_axis(axis=-1, begin=0, end=1))
+    #     gt_rois = F.concat(*[gt_batchid.reshape((-1, 1)), gt_box.reshape((-1, 4))], dim=-1)
+    #
+    #     # ROI features
+    #     if self._roi_mode == 'pool':
+    #         pooled_feat = F.ROIPooling(feat, gt_rois, self._roi_size, 1. / self._stride)
+    #         pooled_ctx_feat = F.ROIPooling(feat, rsn_rois, self._roi_size, 1. / self._stride)
+    #         pooled_pose_feat = F.ROIPooling(feat, rsn_pose_rois, self._roi_size, 1. / self._stride)
+    #     elif self._roi_mode == 'align':
+    #         pooled_feat = F.contrib.ROIAlign(feat, gt_rois, self._roi_size, 1. / self._stride,
+    #                                          sample_ratio=2)
+    #         pooled_ctx_feat = F.contrib.ROIAlign(feat, rsn_rois, self._roi_size, 1. / self._stride,
+    #                                              sample_ratio=2)
+    #         pooled_pose_feat = F.contrib.ROIAlign(feat, rsn_pose_rois, self._roi_size, 1. / self._stride,
+    #                                              sample_ratio=2)
+    #     else:
+    #         raise ValueError("Invalid roi mode: {}".format(self._roi_mode))
+    #
+    #     # RCNN prediction
+    #     top_feat = self.top_features(pooled_feat)
+    #     # contextual region prediction
+    #     top_ctx_feat = self.top_features(pooled_ctx_feat)
+    #     top_pose_feat = self.top_features(pooled_pose_feat)
+    #
+    #     if self.use_global_avg_pool:
+    #         top_feat = self.global_avg_pool(top_feat)
+    #         top_ctx_feat = self.global_avg_pool(top_ctx_feat)
+    #         top_pose_feat = self.global_avg_pool(top_pose_feat)
+    #
+    #     top_feat = self.fc(top_feat)
+    #     top_ctx_feat = self.fc_ctx(top_ctx_feat)
+    #     top_pose_feat = self.fc_pose(top_pose_feat)
+    #
+    #     if self._additional_output:
+    #         relation_feat_ho, relation_feat_oh, relation = \
+    #             self.relation(top_feat, top_ctx_feat, gt_box.reshape((-1, 4)), rsn_box)
+    #
+    #         relation_feat_hp, relation_feat_ph, relation_p = \
+    #             self.relation(top_feat, top_pose_feat, gt_box.reshape((-1, 4)), rsn_box_pose)
+    #     else:
+    #         relation_feat_ho, relation_feat_oh = \
+    #             self.relation(top_feat, top_ctx_feat, gt_box.reshape((-1, 4)), rsn_box)
+    #
+    #         relation_feat_hp, relation_feat_ph = \
+    #             self.relation(top_feat, top_pose_feat, gt_box.reshape((-1, 4)), rsn_box_pose)
+    #
+    #     relation_feat_hop = 0.5 * relation_feat_ho + 0.5 * relation_feat_hp
+    #     top_feat = top_feat + relation_feat_hop
+    #     top_ctx_feat = top_ctx_feat + relation_feat_oh
+    #     top_pose_feat = top_pose_feat + relation_feat_ph
+    #
+    #     cls_pred = self.class_predictor(top_feat)
+    #     ctx_cls_pred = self.ctx_class_predictor(top_ctx_feat)
+    #     pose_cls_pred = self.pose_class_predictor(top_pose_feat)
+    #
+    #     # cls_pred (B * N, C) -> (B, N, C)
+    #     cls_pred = cls_pred.reshape((self._max_batch, -1, self.num_class))
+    #     ctx_cls_pred = ctx_cls_pred.reshape((self._max_batch, -1, self.num_class))
+    #     pose_cls_pred = pose_cls_pred.reshape((self._max_batch, -1, self.num_class))
+    #
+    #     ctx_cls_pred = ctx_cls_pred.max(axis=1, keepdims=True)
+    #     cls_pred = F.broadcast_add(cls_pred, ctx_cls_pred)
+    #
+    #     pose_cls_pred = pose_cls_pred.max(axis=1, keepdims=True)
+    #     cls_pred = F.broadcast_add(cls_pred, pose_cls_pred)
+    #
+    #     if self._additional_output:
+    #         return cls_pred, relation
+    #     return cls_pred
+
 
 def get_horelation(name, dataset, pretrained=False, params='', ctx=mx.cpu(),
-                   root=os.path.join('content\\MXNet_last', '.mxnet', 'models'), **kwargs):
+                   root=os.path.join('/home/mehran/Desktop/Human-Object-Relation-Network-master', '.mxnet', 'models'), **kwargs):
     r"""Utility function to return a network.
 
     Parameters

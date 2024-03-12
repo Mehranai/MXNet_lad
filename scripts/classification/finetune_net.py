@@ -250,7 +250,7 @@ if __name__ == '__main__':
     net.collect_params().reset_ctx(ctx)
     net.hybridize()
 
-    # data transform and loader
+    # Data transform and loader
     train_data, val_data = get_dataloader(train_dataset, val_dataset, args.batch_size, args.num_workers)
 
     train(net, train_data, val_data, eval_metric, ctx, args)

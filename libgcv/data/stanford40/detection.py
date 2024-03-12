@@ -19,12 +19,12 @@ class Stanford40Action(VisionDataset):
 
     Parameters
     ----------
-    root : str, default '~/data/Stanford40'
+    root : str, default '~/Data/Stanford40'
         Path to folder storing the dataset.
     split : str, default 'train'
         Candidates can be: 'train', 'test'.
     transform : callable, defaut None
-        A function that takes data and label and transforms them. Refer to
+        A function that takes Data and label and transforms them. Refer to
         :doc:`./transforms` for examples.
 
         A transform function for object detection should take label into consideration,
@@ -49,7 +49,7 @@ class Stanford40Action(VisionDataset):
                "using_a_computer", "walking_the_dog", "washing_dishes", "watching_TV", "waving_hands",
                "writing_on_a_board", "writing_on_a_book")
 
-    def __init__(self, root=os.path.join('/home/mehran/Desktop/Human-Object-Relation-Network-master/Data', 'Stanford40'),
+    def __init__(self, root=os.path.join('/content/Data', 'Stanford40'),
                  split='train', index_map=None, preload_label=True,
                  augment_box=False, load_box=False):
         super(Stanford40Action, self).__init__(root)
@@ -63,6 +63,7 @@ class Stanford40Action(VisionDataset):
         self._image_path = os.path.join(self._root, 'JPEGImages', '{}.jpg')
         self._box_path = os.path.join(self._root, 'Boxes', '{}.pkl')
         self._pose_path = os.path.join(self._root, 'PoseBoxes', '{}.pkl')
+        self._pose_keypoints = os.path.join(self._root, 'PoseAnno_LAD_std40', '{}.pkl')
         self.index_map = index_map or dict(zip(self.classes, range(self.num_class)))
         self._label_cache = self._preload_labels() if preload_label else None
 
@@ -98,6 +99,7 @@ class Stanford40Action(VisionDataset):
         if self._load_box:
             box_path = self._box_path.format(img_id)
             pose_path = self._pose_path.format(img_id)
+            pose_keypoints = self._pose_keypoints.format(img_id)
             with open(pose_path, 'rb') as m:
                 pose = np.array(pkl.load(m))
                 flaten_pose = pose.reshape(pose.shape[0], -1)
@@ -105,7 +107,19 @@ class Stanford40Action(VisionDataset):
             with open(box_path, 'rb') as f:
                 box = pkl.load(f)
 
-            return img, label, box, flaten_pose
+            with open(pose_keypoints, 'rb') as g:
+                pose_kp = pkl.load(g)
+                pose_kp.pop("REye")
+                pose_kp.pop('LEye')
+                pose_kp.pop('REer')
+                pose_kp.pop('LEar')
+
+                keypoint_positions = np.array(list(pose_kp.values()))
+
+                iLAD = self.calculate_iLAD(keypoint_positions)
+                iLAD[np.isnan(iLAD)] = 0
+
+            return img, label, box, iLAD
         return img, label
 
     def _load_items(self, split):
@@ -164,3 +178,24 @@ class Stanford40Action(VisionDataset):
         """Preload all labels into memory."""
         logging.debug("Preloading %s labels into memory...", str(self))
         return [self._load_label(idx) for idx in range(len(self))]
+
+    def calculate_iLAD(self, keypoint_positions):
+        limb_keypoints = [(i, j) for i in range(14) for j in range(i + 1, 13)]
+        limb_directions = []
+
+        for limb_pair in limb_keypoints:
+            joint1, joint2 = limb_pair
+            vec = keypoint_positions[joint2][:2] - keypoint_positions[joint1][:2]
+            limb_directions.append(vec)
+
+        iLAD = np.zeros(int(len(limb_directions) * (len(limb_directions) - 1) / 2))
+        index = 0
+
+        for i in range(len(limb_directions)):
+            for j in range(i + 1, len(limb_directions)):
+                angle = np.dot(limb_directions[i], limb_directions[j]) / (
+                            np.linalg.norm(limb_directions[i]) * np.linalg.norm(limb_directions[j]))
+                iLAD[index] = angle
+                index += 1
+
+        return iLAD

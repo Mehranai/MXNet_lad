@@ -27,7 +27,7 @@ def parse_args():
     parser.add_argument('--dataset', type=str, default='polar',
                         help='Testing dataset.')
     parser.add_argument('--num-workers', '-j', dest='num_workers', type=int,
-                        default=4, help='Number of data workers')
+                        default=4, help='Number of Data workers')
     parser.add_argument('--gpus', type=str, default='0',
                         help='Training with GPUs, you can specify 1,3 for example.')
     parser.add_argument('--pretrained', type=str, default='True',
@@ -71,7 +71,7 @@ def get_dataloader(net, val_dataset, batch_size, num_workers):
     return val_loader
 
 def split_and_load(batch, ctx_list):
-    """Split data to 1 batch each device."""
+    """Split Data to 1 batch each device."""
     num_ctx = len(ctx_list)
     new_batch = []
     for i, data in enumerate(batch):
@@ -133,7 +133,7 @@ if __name__ == '__main__':
         net.load_parameters(args.pretrained.strip())
     net.collect_params().reset_ctx(ctx)
 
-    # testing data
+    # testing Data
     val_dataset, eval_metric = get_dataset(args.dataset, args)
     val_data = get_dataloader(
         net, val_dataset, args.batch_size, args.num_workers)

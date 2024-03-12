@@ -29,8 +29,8 @@ def parse_args():
     parser.add_argument('--dataset', type=str, default='polar',
                         help='Training dataset. Now support polar, voca, voc and coco.')
     parser.add_argument('--num-workers', '-j', dest='num_workers', type=int,
-                        default=4, help='Number of data workers, you can use larger '
-                        'number to accelerate data loading, if you CPU and GPUs are powerful.')
+                        default=4, help='Number of Data workers, you can use larger '
+                        'number to accelerate Data loading, if you CPU and GPUs are powerful.')
     parser.add_argument('--gpus', type=str, default='0',
                         help='Training with GPUs, you can specify 1,3 for example.')
     parser.add_argument('--epochs', type=str, default='',
@@ -232,7 +232,7 @@ def save_params(net, logger, best_map, current_map, epoch, save_interval, prefix
         net.save_parameters('{:s}_{:04d}_{:.4f}.params'.format(prefix, epoch, current_map))
 
 def split_and_load(batch, ctx_list):
-    """Split data to 1 batch each device."""
+    """Split Data to 1 batch each device."""
     num_ctx = len(ctx_list)
     new_batch = []
     for i, data in enumerate(batch):
@@ -432,7 +432,7 @@ if __name__ == '__main__':
             param.initialize()
     net.collect_params().reset_ctx(ctx)
 
-    # training data
+    # training Data
     train_dataset, val_dataset, eval_metric = get_dataset(args.dataset, args)
     train_data, val_data = get_dataloader(
         net, train_dataset, val_dataset, args.batch_size, args.num_workers)

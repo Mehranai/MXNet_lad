@@ -1,5 +1,5 @@
 """Batchify functions.
-They can be used in Gluon data loader to help combine individual samples
+They can be used in Gluon Data loader to help combine individual samples
 into batches for fast processing."""
 import numpy as np
 import mxnet as mx
@@ -81,11 +81,11 @@ def _append_arrs(arrs, use_shared_mem=False, expand=False, batch_axis=0):
     return out
 
 class Stack(object):
-    r"""Stack the input data samples to construct the batch.
+    r"""Stack the input Data samples to construct the batch.
     The N input samples must have the same shape/length and will be stacked to construct a batch.
     Examples
     --------
-    >>> from gluoncv.data import batchify
+    >>> from gluoncv.Data import batchify
     >>> # Stack multiple lists
     >>> a = [1, 2, 3, 4]
     >>> b = [4, 5, 6, 8]
@@ -117,11 +117,11 @@ class Stack(object):
     <NDArray 2x2x4 @cpu(0)>
     """
     def __call__(self, data):
-        """Batchify the input data
+        """Batchify the input Data
         Parameters
         ----------
         data : list
-            The input data samples
+            The input Data samples
         Returns
         -------
         batch_data : NDArray
@@ -151,7 +151,7 @@ class Pad(object):
         Whether to return the valid length in the output.
     Examples
     --------
-    >>> from gluoncv.data import batchify
+    >>> from gluoncv.Data import batchify
     >>> # Inputs are multiple lists
     >>> a = [1, 2, 3, 4]
     >>> b = [4, 5, 6]
@@ -203,7 +203,7 @@ class Pad(object):
         self._ret_length = ret_length
 
     def __call__(self, data):
-        """Batchify the input data.
+        """Batchify the input Data.
         Parameters
         ----------
         data : list
@@ -229,7 +229,7 @@ class Pad(object):
 
 
 class Append(object):
-    r"""Loosely return list of the input data samples.
+    r"""Loosely return list of the input Data samples.
     There is no constraint of shape for any of the input samples, however, you will
     only be able to apply single batch operations since the output have different shapes.
 
@@ -253,12 +253,12 @@ class Append(object):
         self._batch_axis = batch_axis
 
     def __call__(self, data):
-        """Batchify the input data.
+        """Batchify the input Data.
 
         Parameters
         ----------
         data : list
-            The input data samples
+            The input Data samples
         Returns
         -------
         batch_data : NDArray
@@ -270,9 +270,9 @@ class Append(object):
 class Tuple(object):
     """Wrap multiple batchify functions to form a function apply each input function on each
     input fields respectively.
-    Each data sample should be a list or tuple containing multiple attributes. The `i`th batchify
+    Each Data sample should be a list or tuple containing multiple attributes. The `i`th batchify
     function stored in `Tuple` will be applied on the `i`th attribute. For example, each
-    data sample is (nd_data, label). You can wrap two batchify functions using
+    Data sample is (nd_data, label). You can wrap two batchify functions using
     `Wrap(DataBatchify, LabelBatchify)` to batchify nd_data and label correspondingly.
     Parameters
     ----------
@@ -282,7 +282,7 @@ class Tuple(object):
         The additional batchify functions to wrap.
     Examples
     --------
-    >>> from gluoncv.data import batchify
+    >>> from gluoncv.Data import batchify
     >>> a = ([1, 2, 3, 4], 0)
     >>> b = ([5, 7], 1)
     >>> c = ([1, 2, 3, 4, 5, 6, 7], 0)
@@ -331,7 +331,7 @@ class Tuple(object):
                                                 'type(fn[%d]) = %s' % (i, str(type(ele_fn)))
 
     def __call__(self, data):
-        """Batchify the input data.
+        """Batchify the input Data.
 
         Parameters
         ----------
@@ -343,7 +343,7 @@ class Tuple(object):
             A tuple of length N. Contains the batchified result of each attribute in the input.
         """
         assert len(data[0]) == len(self._fn),\
-            'The number of attributes in each data sample should contains' \
+            'The number of attributes in each Data sample should contains' \
             ' {} elements, given {}.'.format(len(self._fn), len(data[0]))
         ret = []
         for i, ele_fn in enumerate(self._fn):

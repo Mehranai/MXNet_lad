@@ -1,5 +1,5 @@
 """
-This module provides data loaders and transfomers for vision datasets.
+This module provides Data loaders and transfomers for vision datasets.
 """
 from . import transforms
 from . import batchify

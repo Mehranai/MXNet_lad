@@ -18,7 +18,7 @@ class COCODetectionMetric(mx.metric.EvalMetric):
 
     Parameters
     ----------
-    dataset : instance of gluoncv.data.COCODetection
+    dataset : instance of gluoncv.Data.COCODetection
         The validation dataset.
     save_prefix : str
         Prefix for the saved JSON results.

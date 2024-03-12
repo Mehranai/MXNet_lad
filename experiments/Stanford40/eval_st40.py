@@ -27,7 +27,7 @@ def parse_args():
     parser.add_argument('--dataset', type=str, default='st40',
                         help='Testing dataset.')
     parser.add_argument('--num-workers', '-j', dest='num_workers', type=int,
-                        default=0, help='Number of data workers')
+                        default=0, help='Number of Data workers')
     parser.add_argument('--gpus', type=str, default='0',
                         help='Training with GPUs, you can specify 1,3 for example.')
     parser.add_argument('--pretrained', type=str, default='pretrained.params',
@@ -61,7 +61,7 @@ def get_dataloader(net, val_dataset, batch_size, num_workers):
 
 
 def split_and_load(batch, ctx_list):
-    """Split data to 1 batch each device."""
+    """Split Data to 1 batch each device."""
     new_batch = []
     for i, data in enumerate(batch):
         new_data = [x.as_in_context(ctx) for x, ctx in zip(data, ctx_list)]
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     args.save_prefix += net_name
     net = libgcv.model.get_model(net_name, pretrained=False)
 
-    # testing data
+    # testing Data
     val_dataset, eval_metric = get_dataset(args.dataset, args)
     val_data = get_dataloader(
         net, val_dataset, args.batch_size, args.num_workers)

@@ -104,7 +104,7 @@ class FasterRCNNDefaultTrainTransform(object):
         if net is None:
             return
 
-        # use fake data to generate fixed anchors for target generation
+        # use fake Data to generate fixed anchors for target generation
         ashape = 128
         # in case network has reset_ctx to gpu
         anchor_generator = copy.deepcopy(net.rpn.anchor_generator)
@@ -115,7 +115,7 @@ class FasterRCNNDefaultTrainTransform(object):
         # record feature extractor for infer_shape
         if not hasattr(net, 'features'):
             raise ValueError("Cannot find features in network, it is a Faster-RCNN network?")
-        self._feat_sym = net.features(mx.sym.var(name='data'))
+        self._feat_sym = net.features(mx.sym.var(name='Data'))
         from ....model.rpn.rpn_target import RPNTargetGenerator
         self._target_generator = RPNTargetGenerator(
             num_sample=num_sample, pos_iou_thresh=pos_iou_thresh,

@@ -31,7 +31,7 @@ def _parse_network(network, outputs, inputs, pretrained, ctx):
     Returns
     -------
     inputs : list of Symbol
-        Network input Symbols, usually ['data']
+        Network input Symbols, usually ['Data']
     outputs : list of Symbol
         Network output Symbols, usually as features
     params : ParameterDict
@@ -83,7 +83,7 @@ class FeatureExtractor(SymbolBlock):
     ctx : Context
         The context, e.g. mxnet.cpu(), mxnet.gpu(0).
     """
-    def __init__(self, network, outputs, inputs=('data',), pretrained=False, ctx=mx.cpu()):
+    def __init__(self, network, outputs, inputs=('Data',), pretrained=False, ctx=mx.cpu()):
         inputs, outputs, params = _parse_network(network, outputs, inputs, pretrained, ctx)
         super(FeatureExtractor, self).__init__(outputs, inputs, params=params)
 
@@ -123,7 +123,7 @@ class FeatureExpander(SymbolBlock):
     """
     def __init__(self, network, outputs, num_filters, use_1x1_transition=True,
                  use_bn=True, reduce_ratio=1.0, min_depth=128, global_pool=False,
-                 pretrained=False, ctx=mx.cpu(), inputs=('data',)):
+                 pretrained=False, ctx=mx.cpu(), inputs=('Data',)):
         inputs, outputs, params = _parse_network(network, outputs, inputs, pretrained, ctx)
         # append more layers
         y = outputs[-1]

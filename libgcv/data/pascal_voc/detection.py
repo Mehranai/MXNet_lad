@@ -24,7 +24,7 @@ class VOCDetection(VisionDataset):
         For years, candidates can be: 2007, 2012.
         For names, candidates can be: 'train', 'val', 'trainval', 'test'.
     transform : callable, defaut None
-        A function that takes data and label and transforms them. Refer to
+        A function that takes Data and label and transforms them. Refer to
         :doc:`./transforms` for examples.
 
         A transform function for object detection should take label into consideration,

@@ -50,7 +50,7 @@ class BBoxClipToImageProp(mx.operator.CustomOpProp):
         self.axis = int(axis)
 
     def list_arguments(self):
-        return ['data', 'shape_like']
+        return ['Data', 'shape_like']
 
     def list_outputs(self):
         return ['output']

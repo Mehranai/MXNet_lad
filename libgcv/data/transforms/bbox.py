@@ -257,9 +257,9 @@ def random_crop_with_constraints(bbox, size, min_scale=0.3, max_scale=1,
                                  max_aspect_ratio=2, constraints=None,
                                  max_trial=50):
     """Crop an image randomly with bounding box constraints.
-    This data augmentation is used in training of
+    This Data augmentation is used in training of
     Single Shot Multibox Detector [#]_. More details can be found in
-    data augmentation section of the original paper.
+    Data augmentation section of the original paper.
     .. [#] Wei Liu, Dragomir Anguelov, Dumitru Erhan, Christian Szegedy,
        Scott Reed, Cheng-Yang Fu, Alexander C. Berg.
        SSD: Single Shot MultiBox Detector. ECCV 2016.

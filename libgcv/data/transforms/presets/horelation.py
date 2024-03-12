@@ -48,8 +48,6 @@ class HORelationDefaultTrainTransform(object):
         img = timage.resize_short_within(img, self._short, self._max_size, interp=1)
         bbox = tbbox.resize(bbox, (w, h), (img.shape[1], img.shape[0]))
         objbox = tbbox.resize(objbox, (w, h), (img.shape[1], img.shape[0]))
-        pose = tbbox.resize(pose, (w, h), (img.shape[1], img.shape[0]))
-
         # color jitter
         # img = self._color_jitter(img)
 

@@ -1,3 +1,3 @@
-"""Presets of sophisticated data transforms."""
+"""Presets of sophisticated Data transforms."""
 from . import rcnn
 from . import rstarcnn

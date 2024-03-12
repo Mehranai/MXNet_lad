@@ -35,7 +35,7 @@ class RPNTargetSampler(gluon.Block):
 
     # pylint: disable=arguments-differ
     def forward(self, ious):
-        """RPNTargetSampler is only used in data transform with no batch dimension.
+        """RPNTargetSampler is only used in Data transform with no batch dimension.
 
         Parameters
         ----------
@@ -130,7 +130,7 @@ class RPNTargetGenerator(gluon.Block):
     # pylint: disable=arguments-differ
     def forward(self, bbox, anchor, width, height):
         """
-        RPNTargetGenerator is only used in data transform with no batch dimension.
+        RPNTargetGenerator is only used in Data transform with no batch dimension.
         Be careful there's numpy operations inside
 
         Parameters

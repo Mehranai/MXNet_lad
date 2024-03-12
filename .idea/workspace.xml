@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82f96948-eb4d-46ff-8218-74c6c19cdf13" name="Changes" comment="lasttt" />
+    <list default="true" id="82f96948-eb4d-46ff-8218-74c6c19cdf13" name="Changes" comment="lasttt">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/HICO/eval_hico.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/HICO/eval_hico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/HICO/train_hico.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/HICO/train_hico.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/Stanford40/eval_st40.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/Stanford40/eval_st40.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/Stanford40/train_st40.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/Stanford40/train_st40.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/VOC2012/eval_voca.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/VOC2012/eval_voca.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/VOC2012/train_voca.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/VOC2012/train_voca.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/batchify.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/batchify.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/hico/classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/hico/classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/mscoco/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/mscoco/detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/pascal_voc/action.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/pascal_voc/action.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/pascal_voc/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/pascal_voc/detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/stanford40/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/stanford40/detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/bbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/bbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/horelation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/data/transforms/presets/rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/data/transforms/presets/rcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/model/ho_relation/ho_relation_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/ho_relation/ho_relation_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/resnetv1b.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/model/rpn/bbox_clip.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/rpn/bbox_clip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/model/rpn/rpn_target.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/model/rpn/rpn_target.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/nn/feature.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/nn/feature.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/utils/metrics/accuracy.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/utils/metrics/accuracy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libgcv/utils/metrics/coco_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/libgcv/utils/metrics/coco_detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/classification/finetune_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/classification/finetune_net.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/detection/eval_faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/detection/eval_faster_rcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/detection/train_faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/detection/train_faster_rcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/object_box_detect/detect_action_boxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/object_box_detect/detect_action_boxes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/object_box_detect/detect_and_vis_action_boxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/object_box_detect/detect_and_vis_action_boxes.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,11 +60,12 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.LAD.executor&quot;: &quot;Debug&quot;,
     &quot;Python.eval_st40.executor&quot;: &quot;Debug&quot;,
     &quot;Python.ho_relation_net.executor&quot;: &quot;Debug&quot;,
     &quot;Python.model_store.executor&quot;: &quot;Debug&quot;,
     &quot;Python.pose_boxes.executor&quot;: &quot;Run&quot;,
-    &quot;Python.train_st40.executor&quot;: &quot;Run&quot;,
+    &quot;Python.train_st40.executor&quot;: &quot;Debug&quot;,
     &quot;Python.train_voca.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -48,7 +82,30 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.train_voca">
+  <component name="RunManager" selected="Python.train_st40">
+    <configuration name="LAD" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Human-Object-Relation-Network-master" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LAD.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="eval_st40" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Human-Object-Relation-Network-master" />
       <option name="ENV_FILES" value="" />
@@ -141,28 +198,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test.sh" type="ShConfigurationType" temporary="true">
-      <option name="SCRIPT_TEXT" value="" />
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/experiments/Stanford40/test.sh" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/experiments/Stanford40" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/usr/bin/env" />
-      <option name="INTERPRETER_OPTIONS" value="bash" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <option name="EXECUTE_SCRIPT_FILE" value="true" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train_st40" />
+        <item itemvalue="Python.LAD" />
         <item itemvalue="Python.train_voca" />
         <item itemvalue="Python.pose_boxes" />
         <item itemvalue="Python.eval_st40" />
-        <item itemvalue="Shell Script.test.sh" />
-        <item itemvalue="Python.train_st40" />
       </list>
     </recent_temporary>
   </component>
@@ -198,6 +240,8 @@
       <workItem from="1709800125366" duration="1000" />
       <workItem from="1709800138600" duration="1530000" />
       <workItem from="1709804284570" duration="1482000" />
+      <workItem from="1709817679022" duration="3204000" />
+      <workItem from="1710246446238" duration="7432000" />
     </task>
     <task id="LOCAL-00001" summary="sdf">
       <option name="closed" value="true" />
@@ -327,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709808191216</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="lasttt">
+      <option name="closed" value="true" />
+      <created>1709817790492</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1709817790492</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,11 +398,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/experiments/Stanford40/train_st40.py</url>
-          <line>218</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/experiments/Stanford40/eval_st40.py</url>
           <line>81</line>
@@ -371,6 +418,31 @@
           <line>238</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/LAD.py</url>
+          <line>182</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/libgcv/data/stanford40/detection.py</url>
+          <line>121</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/Stanford40/train_st40.py</url>
+          <line>238</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/Stanford40/train_st40.py</url>
+          <line>239</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experiments/Stanford40/train_st40.py</url>
+          <line>241</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -383,8 +455,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$model_store.coverage" NAME="model_store Coverage Results" MODIFIED="1709559779348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libgcv/model" />
+    <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$LAD.coverage" NAME="LAD Coverage Results" MODIFIED="1710250235734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$pose_boxes.coverage" NAME="pose_boxes Coverage Results" MODIFIED="1709731912987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$train_st40.coverage" NAME="train_st40 Coverage Results" MODIFIED="1709640155688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments/Stanford40" />
+    <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$train_st40.coverage" NAME="train_st40 Coverage Results" MODIFIED="1710253648112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments/Stanford40" />
     <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$train_voca.coverage" NAME="train_voca Coverage Results" MODIFIED="1709732704689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments/VOC2012" />
     <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$ho_relation_net.coverage" NAME="ho_relation_net Coverage Results" MODIFIED="1709559801171" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libgcv/model/ho_relation" />
     <SUITE FILE_PATH="coverage/Human_Object_Relation_Network_master$eval_st40.coverage" NAME="eval_st40 Coverage Results" MODIFIED="1709703969632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/experiments/Stanford40" />

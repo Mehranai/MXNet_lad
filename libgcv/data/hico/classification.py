@@ -16,12 +16,12 @@ class HICOClassification(VisionDataset):
 
     Parameters
     ----------
-    root : str, default '~/data/hico'
+    root : str, default '~/Data/hico'
         Path to folder storing the dataset.
     split : str, default 'train'
         Candidates can be: 'train', 'test'.
     transform : callable, defaut None
-        A function that takes data and label and transforms them. Refer to
+        A function that takes Data and label and transforms them. Refer to
         :doc:`./transforms` for examples.
 
         A transform function for object detection should take label into consideration,
@@ -146,7 +146,7 @@ class HICOClassification(VisionDataset):
                'wine_glass toast', 'wine_glass lick', 'wine_glass wash', 'wine_glass no_interaction', 'zebra feed',
                'zebra hold', 'zebra pet', 'zebra watch', 'zebra no_interaction']
 
-    def __init__(self, root=os.path.join('~', 'data', 'hico'),
+    def __init__(self, root=os.path.join('~', 'Data', 'hico'),
                  split='train', index_map=None, preload_label=True,
                  augment_box=False, load_box=False, ignore_label=None, random_cls=False):
         super(HICOClassification, self).__init__(root)
