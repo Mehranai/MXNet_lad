@@ -56,7 +56,7 @@ class VOCAction(VisionDataset):
         self._items = self._load_items(split)
         self._anno_path = os.path.join(self._root, 'Annotations', '{}.xml')
         self._box_path = os.path.join(self._root, 'Boxes', '{}.pkl')
-        self._pose_path = os.path.join(self._root, 'PoseBoxes', '{}.pkl')
+        self._pose_path = os.path.join(self._root, 'PoseAnno_LAD', '{}.pkl')
         self._image_path = os.path.join(self._root, 'JPEGImages', '{}.jpg')
         self.index_map = index_map or dict(zip(self.classes, range(self.num_class)))
         self._label_cache = self._preload_labels() if preload_label else None
@@ -99,10 +99,19 @@ class VOCAction(VisionDataset):
             pose_path = self._pose_path.format(img_id)
             with open(box_path, 'rb') as f:
                 box = pkl.load(f)
-            with open(pose_path, 'rb') as f:
-                pose = pkl.load(f)
-                pose = np.array(pose)
-            return img, label, box, pose
+            with open(pose_path, 'rb') as g:
+                pose_kp = pkl.load(g)
+                pose_kp.pop("REye")
+                pose_kp.pop('LEye')
+                pose_kp.pop('REer')
+                pose_kp.pop('LEar')
+
+                keypoint_positions = np.array(list(pose_kp.values()))
+
+                iLAD = self.calculate_iLAD(keypoint_positions)
+                iLAD[np.isnan(iLAD)] = 0
+
+            return img, label, box, iLAD
         return img, label
 
     def _load_items(self, split):
@@ -168,3 +177,23 @@ class VOCAction(VisionDataset):
         """Preload all labels into memory."""
         logging.debug("Preloading %s labels into memory...", str(self))
         return [self._load_label(idx) for idx in range(len(self))]
+    def calculate_iLAD(self, keypoint_positions):
+        limb_keypoints = [(i, j) for i in range(14) for j in range(i + 1, 13)]
+        limb_directions = []
+
+        for limb_pair in limb_keypoints:
+            joint1, joint2 = limb_pair
+            vec = keypoint_positions[joint2][:2] - keypoint_positions[joint1][:2]
+            limb_directions.append(vec)
+
+        iLAD = np.zeros(int(len(limb_directions) * (len(limb_directions) - 1) / 2))
+        index = 0
+
+        for i in range(len(limb_directions)):
+            for j in range(i + 1, len(limb_directions)):
+                angle = np.dot(limb_directions[i], limb_directions[j]) / (
+                            np.linalg.norm(limb_directions[i]) * np.linalg.norm(limb_directions[j]))
+                iLAD[index] = angle
+                index += 1
+
+        return iLAD
